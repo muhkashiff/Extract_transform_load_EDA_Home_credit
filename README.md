@@ -9,7 +9,7 @@ The purpose of the project is to make accurate predictions for categorical data 
 - [Data Cleaning](#data-cleaning)
   - [Data Loading](#data-loading)
   - [Data Segregation](#data-segregation)
-  - [Data Preparation](#data-preparation)
+  - [Data Processing](#data-processing)
   - [Data Prediction](#data-prediction)
   - [Data Export](#data-export)
   - [Results and Conclusions](#results-and-conclusions)
@@ -38,7 +38,7 @@ Provided data is in csv forms. Since data size is too big. it is not uploaded in
 
 ### Data Segregation
 
-### Data Preparation
+### Data Processing
 
 ### Data Prediction
 
