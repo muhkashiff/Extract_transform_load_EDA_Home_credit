@@ -4,23 +4,28 @@
 The purpose of the project is to make accurate predictions for categorical data missing values using machine learning model. Accuracy of predictions also determined.
 
 ## Table of Contents
+- [Extract](#extract)
 - [Data Source](#data-source)
 - [Data Sets](#data-sets)
+- [Transform](#transform)
 - [Data Cleaning](#data-cleaning)
   - [Data Loading](#data-loading)
   - [Data Segregation](#data-segregation)
   - [Data Processing](#data-processing)
   - [Data Prediction](#data-prediction)
+-[Load](#load)
   - [Data Export](#data-export)
-  - [Results and Conclusions](#results-and-conclusions)
+- [Results and Conclusions](#results-and-conclusions)
 - [Dependencies](#dependencies)
 - [Future Work](#future-work)
 - [Acknowledgments](#acknowledgments)
 - [Author](#author)
 - [References](#references)
 
+# Extract
+This is the process of obtaining data from the source. 
 ## Data Source
-
+In this project data is obtained from Home credit default risk at Kaggle.com 
 ## Data Sets
 Provided data has seven tables that are used in the project for cleaning and further analysis and machine learning models for prediction various features.
 Provided data is in csv forms. Since data size is too big. it is not uploaded into github. it can be downloaded from kaggle directly.
@@ -32,15 +37,22 @@ Provided data is in csv forms. Since data size is too big. it is not uploaded in
 - [Installments payments]
 - [POS CASH Balance]
 
+# Transform
+Transformation is the process where data is renamed, adjusted or manipulated in a way to give missing data fields either meaningful data or removing the empty fields from dataset.In this project our aim is study the process where we lose minimal data and fill empty data fields by using Machine learning models especially categorial data. Commonly transformation process is refered to as cleaning data as well so we will dig deeper into cleaning process.
+
 ## Data Cleaning
+The process of data cleaning is divided into three stages below as per techniquie followed to better understand segregate , process the numerial data and then make the predictions for categorical data and put the predicted values into missing fields.
 
 ### Data Loading
+
 
 ### Data Segregation
 
 ### Data Processing
 
 ### Data Prediction
+
+# Load
 
 ### Data Export
 
