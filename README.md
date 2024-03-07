@@ -44,7 +44,7 @@ Transformation is the process where data is renamed, adjusted or manipulated in 
 The process of data cleaning is divided into three stages below as per techniquie followed to better understand segregate , process the numerial data and then make the predictions for categorical data and put the predicted values into missing fields.
 
 ### Data Loading
-
+![Alt Text](read_file_load.png)
 
 ### Data Segregation
 
