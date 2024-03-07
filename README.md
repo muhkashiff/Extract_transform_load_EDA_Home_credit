@@ -2,7 +2,8 @@
 
 ## Project Summary
 The purpose of the project is to make accurate predictions for categorical data missing values using machine learning model. Accuracy of predictions also determined.
-
+# Process Diagram
+![Alt Text](process_diagram.PNG)
 ## Table of Contents
 - [Extract](#extract)
 - [Data Source](#data-source)
@@ -89,6 +90,8 @@ Data cleaning is very important aspect for performing analysis and making predic
 
 ## Acknowledgments
 I would like to thank Home credit for providing Data set on Kaggle.com for analysis.
+draw.io for generating Process diagram.
+Lovepreet singh, Audrey Nkrumah and Vinay for data search during class project.
 
 ## Author
 
