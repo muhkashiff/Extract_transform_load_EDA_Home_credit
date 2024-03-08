@@ -45,7 +45,36 @@ Transformation is the process where data is renamed, adjusted or manipulated in 
 The process of data cleaning is divided into three stages below as per techniquie followed to better understand segregate , process the numerial data and then make the predictions for categorical data and put the predicted values into missing fields.
 
 ### Data Loading
-![Alt Text](read_file_load.png)
+``` bash
+# Dictionary to hold file names and their paths
+file_paths = {
+    'application_train': '../Resources/application_train.csv',
+    'bureau': '../Resources/bureau.csv',
+    'bureau_balance': '../Resources/bureau_balance.csv',
+    'credit_card_balance': '../Resources/credit_card_balance.csv',
+    'POS_CASH_balance': '../Resources/POS_CASH_balance.csv',
+    'previous_application': '../Resources/previous_application.csv',
+    'installments_payments': '../Resources/installments_payments.csv'
+}
+
+# Dictionary to hold the loaded data
+data_frames = {}
+
+# Loop through the file_paths dictionary to load each file
+for file_name, relative_path in file_paths.items():
+    # Construct the absolute path
+    file_path = os.path.abspath(relative_path)
+    
+    # Attempt to load the CSV file into a DataFrame
+    try:
+        data_frames[file_name] = pd.read_csv(file_path)
+        print(f"{file_name} data loaded successfully!")
+    except FileNotFoundError:
+        print(f"Error: File not found at {file_path}")
+    except Exception as e:
+        print(f"An error occurred while loading {file_name}: {e}")
+
+```
 
 ### Data Segregation
 
