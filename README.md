@@ -1,7 +1,7 @@
 # Home Credit Default Risk Categorical Data Cleanining Using Machine Learning. 
 
 ## Project Summary
-The purpose of the project is to make accurate predictions for categorical data missing values using machine learning model. Accuracy of predictions also determined.
+The purpose of the project is to make accurate predictions for categorical data missing values using machine learning model. Data is analysed by segregating data by their types. After careful review of each column, Numerical and Categorical data.Prediction is made using Machine Learning model RandomForestClassifier and Accuracy of predictions for each column is determined.
 # Process Diagram
 ![Alt Text](process_diagram.PNG)
 ## Table of Contents
