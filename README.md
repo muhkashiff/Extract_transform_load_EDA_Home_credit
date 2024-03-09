@@ -460,10 +460,6 @@ from sklearn.impute import SimpleImputer
 from sklearn.metrics import accuracy_score
 
 ```
-
-## How to Run
-
-
 ## Future Work
 Data cleaning is very important aspect for performing analysis and making predictions. If data is not cleaned properly our models can make wrong prediction and vital relations can not be understood.
 
