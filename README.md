@@ -433,13 +433,13 @@ Number of missing values after filling: 0
 
 ```
 # Load
-
+In this phase, data is loaded into data warehouse.
 ### Data Export
-
+In this project data after prediction is exported as csv file. or can be stored into database e.g postgresql.
 
 ## Results and Conclusions
 
-
+Home credit default risk dataset contained large number of missing values in some columns of categoricals which result in siginificant loss of data if NaN values are dopped directly. forexample, application_train table has more than 300,000. rows which after perform dropna is left with only around 8000 rows. This massive data loss is not acceptable. by using Machine learning, there was not a data loss of a single row. So Machine learning has helped greatly to predict categorical with accuracy score of 1.00 as evident from above result. In the code file'home_credit_data_cleaning.ipynb' all tables were cleaned and saved.
 
   
 ## Dependencies
