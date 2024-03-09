@@ -330,6 +330,13 @@ The accuracy score of the classifier for predicting missing values in the curren
 This step checks if there are still any NaN values remaining in the DataFrame after imputation.  
 Finally,the total number of missing values in the DataFrame after all missing values have been filled is printed.  
 
+#### Pipeline
+It simplifies the code by encapsulating multiple processing steps into a single object.This makes the code more readable, modular, and easier to maintain.A Pipeline helps ensure reproducibility by encapsulating the entire process, including preprocessing and modeling, in one entity.It ensures that the steps are executed in the correct order, which is crucial for preprocessing and model training.
+
+#### Masking
+Masking is used to separate the data into two sets: one with known values and another with missing values in the target column.
+This separation is crucial for training a machine learning model. Known samples are used for training, and the model is then used to predict the missing values in the unknown samples.
+
 ``` bash
 # Identify columns with missing categorical values
 categorical_columns_with_missing = merge_data.select_dtypes(include='object').columns[merge_data.select_dtypes(include='object').isnull().any()]
