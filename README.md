@@ -24,7 +24,7 @@ The purpose of the project is to make accurate predictions for categorical data 
 - [References](#references)
 
 # Extract
-This is the process of obtaining data from the source. 
+The process of obtaining data from the source. 
 ## Data Source
 In this project data is obtained from Home credit default risk at Kaggle.com 
 ## Data Sets
@@ -45,6 +45,8 @@ Transformation is the process where data is renamed, adjusted or manipulated in 
 The process of data cleaning is divided into three stages below as per techniquie followed to better understand segregate , process the numerial data and then make the predictions for categorical data and put the predicted values into missing fields.
 
 ### Data Loading
+Data is loaded from csv files in this project using absolute path method. since Data files are big size which can not be accomodated in the github. so for sake of project they were kept in different folder to avoid large size file errors during commit stage. Code for loading data using absolute path is below.
+
 ``` bash
 # Dictionary to hold file names and their paths
 file_paths = {
@@ -75,9 +77,37 @@ for file_name, relative_path in file_paths.items():
         print(f"An error occurred while loading {file_name}: {e}")
 
 ```
-
+The data is present is dictionary  data_frames each data set can be accessed using code below. 
+``` bash
+# view application_train data
+application_train_df = data_frames['application_train']
+application_train_df
+```
 ### Data Segregation
+After accessing data. Data is segregated by data type e.g Numerical and Categorical Data. This will help to better understand data and treat each column with care so each column can be filled with right values. In this project our focus is to use categorical data for cleaning and predicting values using Machine Learning models. In this project, SK_ID_CURR is considered unique ID for table application_train, previous_application and bureau, while SK_ID_BUREAU is taken as unqiue in the Table bureau_balance. SK_ID_PREV is taken as unique ID in tables POS_CASH_balance, installments_payments and credit_card_balance.
+This unique ID consideration is taken as measure clean data and then merge different tables.
+code for segregating categorical data and numerical data is shown below.
+''' bash
+# Separate SK_ID_CURR along with numerical columns
+numerical_and_id = application_train_df.select_dtypes(include=['number']).copy()
 
+# Include SK_ID_CURR in numerical set
+numerical_and_id['SK_ID_CURR'] = application_train_df['SK_ID_CURR']
+
+# Separate SK_ID_CURR along with categorical columns
+categorical_and_id = application_train_df.select_dtypes(include=['object', 'category']).copy()
+
+# Include SK_ID_CURR in categorical set
+categorical_and_id['SK_ID_CURR'] = application_train_df['SK_ID_CURR']
+
+# Print the selected numerical data
+print("SK_ID_CURR along with Numerical Columns:")
+print(numerical_and_id)
+
+# print selected categorical data
+print("\nSK_ID_CURR along with Categorical Columns:")
+print(categorical_and_id)
+```
 ### Data Processing
 
 ### Data Prediction
