@@ -1,7 +1,7 @@
 # Home Credit Default Risk Categorical Data Cleanining Using Machine Learning. 
 
 ## Project Summary
-The purpose of the project is to make accurate predictions for categorical data missing values using machine learning model. Data is analysed by segregating data by their types. After careful review of each column, Numerical and Categorical data.Prediction is made using Machine Learning model RandomForestClassifier and Accuracy of predictions for each column is determined.
+The purpose of the project is to make accurate predictions for categorical data missing values using machine learning model. Data is analysed by segregating data by their types. After careful review of each column, Numerical and Categorical data.Prediction is made using Machine Learning model RandomForestClassifier and Accuracy of predictions for each column is determined. In the second step, application_train table is cleaned using Un-supervised learning model and their comparative results are presented in the form of bar charts to visualize and determine the difference. The time of cleaning is also calculated and gave interest insight into ecomnomy of using the model between unsupervised and supervised.
 # Process Diagram
 ![Alt Text](process_diagram.PNG)
 ## Table of Contents
@@ -14,6 +14,7 @@ The purpose of the project is to make accurate predictions for categorical data 
   - [Data Segregation](#data-segregation)
   - [Data Processing](#data-processing)
   - [Data Prediction](#data-prediction)
+  - [Models Comparison](#models-comparison)
 -[Load](#load)
   - [Data Export](#data-export)
 - [Results and Conclusions](#results-and-conclusions)
@@ -432,6 +433,9 @@ Filled 145755 missing values for EMERGENCYSTATE_MODE with accuracy: 1.0000
 Number of missing values after filling: 0
 
 ```
+### Models Comparise
+After running unsupervised and supervised models their results are compared and time taken for the process to complete is also determine which will helps determing the economic machine leaning model to use.
+
 # Load
 In this phase, data is loaded into data warehouse.
 ### Data Export
