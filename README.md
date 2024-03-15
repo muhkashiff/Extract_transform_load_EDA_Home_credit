@@ -561,6 +561,15 @@ learning method took 50 minutes and 26 seconds. This is almost 50 folds time dif
 unsupervised and supervised leanring using the same dataframe. It is also noted that predicted number of results are also same, that 
 means clusttering and Randomforestclassifier made exactly same predictions which is evident by value counts of numbers after predictions
 are made while their visalization prove the same point.  
+Below is tabular data of results after cleaning by both models.  
+
+| Column Name        | Supervised Results | UnSupervised Results |
+| :----------------- | :----------------: | :-------------------:|
+| OCCUPATION_TYPE    | 96391              | 96391                |
+| FONDKAPREMONT_MODE | 210295             | 210295               |
+| HOUSETYPE_MODE     | 154297             | 154297               |
+| WALLSMATERIAL_MODE | 156341             | 156341               |
+| EMERGENCYSTATE_MODE| 145755             | 145755               |
 
 Below are graphs are only taken for those categorical columns which has null.  
 ![Alt Text](emergency.png)  
@@ -576,7 +585,7 @@ In this project data after prediction is exported as csv file. or can be stored 
 
 ## Results and Conclusions
 
-Home credit default risk dataset contained large number of missing values in columns OCCUPATION_TYPE(null values = 96391), FONDKAPREMONT_MODE(null values = 210295), HOUSETYPE_MODE(null values = 154297),WALLSMATERIAL_MODE(null values = 154297), EMERGENCYSTATE_MODE(null values = 145755) of categorical data which result in siginificant loss of data if NaN values are dopped directly.Application_train table has more than 300,000. rows which after perform dropna is left with almost 8000 rows. This massive data loss is not acceptable. By employing Machine learning model, there was not a data loss of a single row. In this project, supervised and unsupervised methods are used and their economy is also determined. Unsupervised Machine learning method predicted the same categorical data in 1 minute and 2 seconds while Supervised machine learning model using RandomForestClassifier took 50 minutes and 26 seconds. So Machine learning has helped greatly to predict categorical with accuracy score of 1.00 as evident from above result. The graphical visualization shows that both models predicted data with accuracy and and output gave same number of values. In the code file'home_credit_data_cleaning.ipynb' all tables were cleaned and saved.
+Home credit default risk dataset contained large number of missing values in columns OCCUPATION_TYPE(null values = 96391), FONDKAPREMONT_MODE(null values = 210295), HOUSETYPE_MODE(null values = 154297),WALLSMATERIAL_MODE(null values = 156341), EMERGENCYSTATE_MODE(null values = 145755) of categorical data which result in siginificant loss of data if NaN values are dopped directly.Application_train table has more than 300,000. rows which after perform dropna is left with almost 8000 rows. This massive data loss is not acceptable. By employing Machine learning model, there was not a data loss of a single row. In this project, supervised and unsupervised methods are used and their economy is also determined. Unsupervised Machine learning method predicted the same categorical data in 1 minute and 2 seconds while Supervised machine learning model using RandomForestClassifier took 50 minutes and 26 seconds. So Machine learning has helped greatly to predict categorical with accuracy score of 1.00 as evident from above result. The graphical visualization shows that both models predicted data with accuracy and and output gave same number of values. In the code file'home_credit_data_cleaning.ipynb' all tables were cleaned and saved.
 
   
 ## Dependencies
