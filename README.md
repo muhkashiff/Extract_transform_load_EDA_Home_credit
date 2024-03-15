@@ -554,11 +554,20 @@ Time taken to run the code: 1 minutes and 2 seconds
 ```
 
 ## Models Comparison
-After running unsupervised and supervised models their results are compared and time taken for the process to complete is also determine which will helps determing the economic machine  
-leaning model to use.It is very surprising that Unsupervised learning method using clusttering technique only took 1 minute and 2 seconds to predict the categorical data and output the  
-filled dataframe. while supervised learning method took 50 minutes and 26 seconds. This is almost 50 folds time difference in time taken to predict the data between unsupervised and  
-supervised leanring using the same dataframe. It is also noted that predicted number of results are also same, that means clusttering and Randomforestclassifier made exactly same  
-predictions which is evident by value counts of numbers after predictions are made while their visalization prove the same point.  
+After running unsupervised and supervised models their results are compared and time taken for the process to complete is also determine 
+which will helps determing the economic machine leaning model to use.It is very surprising that Unsupervised learning method using 
+clusttering technique only took 1 minute and 2 seconds to predict the categorical data and output the filled dataframe. while supervised 
+learning method took 50 minutes and 26 seconds. This is almost 50 folds time difference in time taken to predict the data between
+unsupervised and supervised leanring using the same dataframe. It is also noted that predicted number of results are also same, that 
+means clusttering and Randomforestclassifier made exactly same predictions which is evident by value counts of numbers after predictions
+are made while their visalization prove the same point.  
+
+Below are graphs are only taken for those categorical columns which has null.  
+![Alt Text](emergency.png)  
+![Alt Text](fondk.png)  
+![Alt Text](house.png)  
+![Alt Text](occupation.png)  
+![Alt Text](walls.png)  
 
 # Load
 In this phase, data is loaded into data warehouse.
