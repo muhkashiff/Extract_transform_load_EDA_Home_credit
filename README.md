@@ -321,6 +321,11 @@ Then merged data is used to predict categorical values. In this project any tabl
 
 ### Data Prediction  
 #### Supervised Learning  
+Supervised learning is a type of machine learning where the algorithm learns from labeled data, which means each input data point is paired with a corresponding target label or output.  
+The goal of supervised learning is to learn a mapping from inputs to outputs, based on the provided labeled examples, in such a way that the model can generalize to unseen data and  
+accurately predict the correct output for new inputs.  
+Below are the steps taken to run the supervised learning model for the prediction of categorcial data.
+  
 Merged table is used for prediction of categorical data. Prediction is made using RandomForestClassifier.  
 In the first step, missing values in the categorical values are identified.  
 A copy of the original dataframe is created to maintain its integrity.  
@@ -336,6 +341,7 @@ The missing values in the original DataFrame are replaced with the predicted val
 The accuracy score of the classifier for predicting missing values in the current column is calculated and stored.  
 This step checks if there are still any NaN values remaining in the DataFrame after imputation.  
 Finally,the total number of missing values in the DataFrame after all missing values have been filled is printed.  
+Time taken to complete the process is also calculated to determine the economy of the model.
 
 #### Pipeline
 It simplifies the code by encapsulating multiple processing steps into a single object.This makes the code more readable, modular, and easier to maintain.A Pipeline helps ensure reproducibility by encapsulating the entire process, including preprocessing and modeling, in one entity.It ensures that the steps are executed in the correct order, which is crucial for preprocessing and model training.
@@ -345,6 +351,9 @@ Masking is used to separate the data into two sets: one with known values and an
 This separation is crucial for training a machine learning model. Known samples are used for training, and the model is then used to predict the missing values in the unknown samples.
 
 ``` bash
+# Record the start time
+start_time = time.time()
+time.sleep(2)  # This makes the program wait for 2 seconds
 # Identify columns with missing categorical values
 categorical_columns_with_missing = merge_data.select_dtypes(include='object').columns[merge_data.select_dtypes(include='object').isnull().any()]
 
@@ -411,9 +420,21 @@ for col in categorical_columns_with_missing:
 
 # Ensure there are no missing values left
 print("\nNumber of missing values after filling:", df_filled.isnull().sum().sum())
+# Record the end time
+end_time = time.time()
+
+# Calculate the time taken
+time_taken = end_time - start_time
+
+# Convert to minutes and seconds
+minutes = int(time_taken // 60)
+seconds = int(time_taken % 60)
+
+print(f"Time taken to run the code: {minutes} minutes and {seconds} seconds")
 ```
 Below are output results after prediction is made for categorical values.
-``` bash
+
+```
 Filling missing values for NAME_TYPE_SUITE
 Filled 1292 missing values for NAME_TYPE_SUITE with accuracy: 1.0000
 NaN values still present after imputation in columns: Index(['OCCUPATION_TYPE', 'FONDKAPREMONT_MODE', 'HOUSETYPE_MODE',
@@ -437,12 +458,107 @@ Filling missing values for EMERGENCYSTATE_MODE
 Filled 145755 missing values for EMERGENCYSTATE_MODE with accuracy: 1.0000
 
 Number of missing values after filling: 0
+Time taken to run the code: 50 minutes and 26 seconds
+```
+
+#### UnSupervised Learning  
+Unsupervised learning is a type of machine learning where the algorithm learns from unlabeled data, which means the input data is not paired with corresponding target labels or outputs. The goal of unsupervised learning is to find patterns, structures, or relationships in the input data without explicit guidance or supervision from labeled examples.  
+Below is code snippet for unsupervised learning.  
+``` bash
+# Record the start time
+start_time = time.time()
+
+# Identify columns with missing values
+categorical_columns_with_missing = application_train_df_unsupervised.select_dtypes(include='object').columns[application_train_df_unsupervised.select_dtypes(include='object').isnull().any()]
+numerical_columns_with_missing = application_train_df_unsupervised.select_dtypes(include=['int64', 'float64']).columns[application_train_df_unsupervised.select_dtypes(include=['int64', 'float64']).isnull().any(axis=0)]
+
+# Initialize n_clusters for KMeans
+n_clusters = 5
+
+# Create a copy of the DataFrame for preprocessing
+df_filled_unsupervised = application_train_df_unsupervised.copy()
+
+# Fill missing numerical values with 0
+for col in numerical_columns_with_missing:
+    df_filled_unsupervised[col] = df_filled_unsupervised[col].fillna(0)
+
+# Prepare DataFrame for clustering (excluding categorical columns with missing values)
+df_clustering = df_filled_unsupervised.drop(columns=categorical_columns_with_missing)
+
+# Convert remaining categorical variables to dummy variables for clustering
+df_clustering = pd.get_dummies(df_clustering, drop_first=True)
+
+# Perform clustering
+kmeans = KMeans(n_clusters=n_clusters, random_state=42)
+df_clustering['cluster'] = kmeans.fit_predict(df_clustering)
+
+# Add the cluster information back to the df_filled DataFrame
+df_filled_unsupervised['cluster'] = df_clustering['cluster']
+
+# Fill missing categorical values based on clusters
+for col in categorical_columns_with_missing:
+    print(f"Filling missing values for {col} using clustering-based approach")
+    # Count the number of missing values before filling
+    missing_before = df_filled_unsupervised[col].isnull().sum()
+
+    # Loop over each cluster to fill missing values
+    for cluster in range(n_clusters):
+        cluster_df = df_filled_unsupervised.loc[df_filled_unsupervised['cluster'] == cluster, col]
+
+        if not cluster_df.empty:
+            mode_value = cluster_df.mode().iloc[0] if not cluster_df.mode().empty else df_filled_unsupervised[col].mode()[0] if df_filled_unsupervised[col].mode().size > 0 else "Missing"
+            df_filled_unsupervised.loc[(df_filled_unsupervised['cluster'] == cluster) & (df_filled_unsupervised[col].isnull()), col] = mode_value
+
+    # Count the number of missing values after filling and calculate the filled amount
+    missing_after = df_filled_unsupervised[col].isnull().sum()
+    total_filled = missing_before - missing_after
+    print(f"Filled {total_filled} missing values for {col}")
+
+# remove the cluster column 
+df_filled_unsupervised.drop(columns=['cluster'], inplace=True)
+
+# Verify no missing values are left
+print("\nNumber of missing values after filling:", df_filled_unsupervised.isnull().sum().sum())
+
+# Record the end time
+end_time = time.time()
+
+# Calculate the time taken
+time_taken = end_time - start_time
+
+# Convert to minutes and seconds
+minutes = int(time_taken // 60)
+seconds = int(time_taken % 60)
+
+print(f"Time taken to run the code: {minutes} minutes and {seconds} seconds")
 
 ```
-#### UnSupervised Learning  
+below are the results of unsupervised  
+```
+Filling missing values for NAME_TYPE_SUITE using clustering-based approach
+Filled 1292 missing values for NAME_TYPE_SUITE
+Filling missing values for OCCUPATION_TYPE using clustering-based approach
+Filled 96391 missing values for OCCUPATION_TYPE
+Filling missing values for FONDKAPREMONT_MODE using clustering-based approach
+Filled 210295 missing values for FONDKAPREMONT_MODE
+Filling missing values for HOUSETYPE_MODE using clustering-based approach
+Filled 154297 missing values for HOUSETYPE_MODE
+Filling missing values for WALLSMATERIAL_MODE using clustering-based approach
+Filled 156341 missing values for WALLSMATERIAL_MODE
+Filling missing values for EMERGENCYSTATE_MODE using clustering-based approach
+Filled 145755 missing values for EMERGENCYSTATE_MODE
+
+Number of missing values after filling: 0
+Time taken to run the code: 1 minutes and 2 seconds
+
+```
 
 ## Models Comparison
-After running unsupervised and supervised models their results are compared and time taken for the process to complete is also determine which will helps determing the economic machine leaning model to use.  
+After running unsupervised and supervised models their results are compared and time taken for the process to complete is also determine which will helps determing the economic machine  
+leaning model to use.It is very surprising that Unsupervised learning method using clusttering technique only took 1 minute and 2 seconds to predict the categorical data and output the  
+filled dataframe. while supervised learning method took 50 minutes and 26 seconds. This is almost 50 folds time difference in time taken to predict the data between unsupervised and  
+supervised leanring using the same dataframe. It is also noted that predicted number of results are also same, that means clusttering and Randomforestclassifier made exactly same  
+predictions which is evident by value counts of numbers after predictions are made while their visalization prove the same point.  
 
 # Load
 In this phase, data is loaded into data warehouse.
