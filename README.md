@@ -1,4 +1,4 @@
-# Home Credit Default Risk Categorical Data Cleanining Using Machine Learning. 
+# Home Credit Default Risk Categorical Data Cleanining Using Machine Learning and Economical Modelling Insight.
 
 ## Project Summary
 The purpose of the project is to make accurate predictions for categorical data missing values using machine learning model. Data is analysed by segregating data by their types. After careful review of each column, Numerical and Categorical data.Prediction is made using Machine Learning model RandomForestClassifier and Accuracy of predictions for each column is determined as well. In the second method, application_train table is cleaned using Un-supervised learning model.The results are compared in the form of bar charts to visualize and determine the difference. The start and end time of cleaning process is also calculated, which gave interesting insight into economical model to be used for predicting categorical data.
