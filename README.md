@@ -1,21 +1,26 @@
 # Home Credit Default Risk Categorical Data Cleanining Using Machine Learning. 
 
 ## Project Summary
-The purpose of the project is to make accurate predictions for categorical data missing values using machine learning model. Data is analysed by segregating data by their types. After careful review of each column, Numerical and Categorical data.Prediction is made using Machine Learning model RandomForestClassifier and Accuracy of predictions for each column is determined. In the second step, application_train table is cleaned using Un-supervised learning model and their comparative results are presented in the form of bar charts to visualize and determine the difference. The time of cleaning is also calculated and gave interest insight into ecomnomy of using the model between unsupervised and supervised.
+The purpose of the project is to make accurate predictions for categorical data missing values using machine learning model. Data is analysed by segregating data by their types. After careful review of each column, Numerical and Categorical data.Prediction is made using Machine Learning model RandomForestClassifier and Accuracy of predictions for each column is determined as well. In the second method, application_train table is cleaned using Un-supervised learning model.The results are compared in the form of bar charts to visualize and determine the difference. The start and end time of cleaning process is also calculated, which gave interesting insight into economical model to be used for predicting categorical data.
+Before the begining of cleaning process numerical values were filled with 0. Since data table contains empty values for columns which states (Supporting or external) Documents provided by applicant so we assume no document is provided. although it leads to skewness of data but sake of modelling missing values in this regards is considered as no information provided.  
+
 # Process Diagram
+This diagram shows data is obtained from source, preprocessed, cleaned and predictions are made and then data is stored into datawarehouse.  
 ![Alt Text](process_diagram.PNG)
 ## Table of Contents
 - [Extract](#extract)
-- [Data Source](#data-source)
-- [Data Sets](#data-sets)
+  - [Data Source](#data-source)
+  - [Data Sets](#data-sets)
 - [Transform](#transform)
-- [Data Cleaning](#data-cleaning)
+  - [Data Cleaning](#data-cleaning)
   - [Data Loading](#data-loading)
   - [Data Segregation](#data-segregation)
   - [Data Processing](#data-processing)
   - [Data Prediction](#data-prediction)
-  - [Models Comparison](#models-comparison)
--[Load](#load)
+      - [Supervised Learning](#supervised-learning)
+      - [UnSupervised Learning](#unsupervised-learning)   
+  - [Models Comparison](#models-comparison)  
+- [Load](#load)
   - [Data Export](#data-export)
 - [Results and Conclusions](#results-and-conclusions)
 - [Dependencies](#dependencies)
@@ -314,7 +319,8 @@ Name: count, dtype: int64
 Before going into prediction phase, numerical data is filled with values and merged based on column SK_ID_CURR.
 Then merged data is used to predict categorical values. In this project any table which does not have missing categorical values, numerical data is filled with 0 values except Target column. output csv file is saved for later use.
 
-### Data Prediction
+### Data Prediction  
+#### Supervised Learning  
 Merged table is used for prediction of categorical data. Prediction is made using RandomForestClassifier.  
 In the first step, missing values in the categorical values are identified.  
 A copy of the original dataframe is created to maintain its integrity.  
@@ -433,8 +439,10 @@ Filled 145755 missing values for EMERGENCYSTATE_MODE with accuracy: 1.0000
 Number of missing values after filling: 0
 
 ```
-### Models Comparise
-After running unsupervised and supervised models their results are compared and time taken for the process to complete is also determine which will helps determing the economic machine leaning model to use.
+#### UnSupervised Learning  
+
+## Models Comparison
+After running unsupervised and supervised models their results are compared and time taken for the process to complete is also determine which will helps determing the economic machine leaning model to use.  
 
 # Load
 In this phase, data is loaded into data warehouse.
