@@ -576,7 +576,7 @@ In this project data after prediction is exported as csv file. or can be stored 
 
 ## Results and Conclusions
 
-Home credit default risk dataset contained large number of missing values in some columns of categoricals which result in siginificant loss of data if NaN values are dopped directly. forexample, application_train table has more than 300,000. rows which after perform dropna is left with only around 8000 rows. This massive data loss is not acceptable. by using Machine learning, there was not a data loss of a single row. So Machine learning has helped greatly to predict categorical with accuracy score of 1.00 as evident from above result. In the code file'home_credit_data_cleaning.ipynb' all tables were cleaned and saved.
+Home credit default risk dataset contained large number of missing values in columns OCCUPATION_TYPE(null values = 96391), FONDKAPREMONT_MODE(null values = 210295), HOUSETYPE_MODE(null values = 154297),WALLSMATERIAL_MODE(null values = 154297), EMERGENCYSTATE_MODE(null values = 145755) of categorical data which result in siginificant loss of data if NaN values are dopped directly.Application_train table has more than 300,000. rows which after perform dropna is left with almost 8000 rows. This massive data loss is not acceptable. By employing Machine learning model, there was not a data loss of a single row. In this project, supervised and unsupervised methods are used and their economy is also determined. Unsupervised Machine learning method predicted the same categorical data in 1 minute and 2 seconds while Supervised machine learning model using RandomForestClassifier took 50 minutes and 26 seconds. So Machine learning has helped greatly to predict categorical with accuracy score of 1.00 as evident from above result. The graphical visualization shows that both models predicted data with accuracy and and output gave same number of values. In the code file'home_credit_data_cleaning.ipynb' all tables were cleaned and saved.
 
   
 ## Dependencies
@@ -598,7 +598,7 @@ from sklearn.metrics import accuracy_score
 
 ```
 ## Future Work
-Data cleaning is very important aspect for performing analysis and making predictions. If data is not cleaned properly our models can make wrong prediction and vital relations can not be understood.
+Data cleaning is very important aspect for performing analysis and making predictions. If data is not cleaned properly our models can make wrong prediction and vital relations can not be understood. In this project particular assumptions were made e.g. filling numerical data with 0 values. although numericals data can predicted but they are beyond the scope and economy of the project.  
 
 ## Acknowledgments
 I would like to thank Home credit for providing Data set on Kaggle.com for analysis.
