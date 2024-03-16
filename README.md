@@ -571,6 +571,12 @@ Below is tabular data of results after cleaning by both models.
 | WALLSMATERIAL_MODE | 156341             | 156341               |
 | EMERGENCYSTATE_MODE| 145755             | 145755               |
 
+Time taken tabular data:  
+
+| Time                 | Supervised Method   | UnSupervised Method  |
+| :-----------------   | :----------------:  | :-------------------:|
+| Minutes & Seconds    | 50 miutes 26 seconds| 1 minute 2 seconds   |  
+
 Below are graphs are only taken for those categorical columns which has null.  
 ![Alt Text](emergency.png)  
 ![Alt Text](fondk.png)  
